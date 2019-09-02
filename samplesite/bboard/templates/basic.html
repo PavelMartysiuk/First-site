@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> {%block title%} Главная {%endblock%}- доска объявлений</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1> Объявления</h1>
+
+    </header>
+    <nav>
+    <a href = '/bboard/'>Главная</a>
+    <a href = '{%url "bboard:add"%}'>Добавить</a>
+     {%for rubric in rubrics%}
+    <a href = "{% url 'bboard:rubric' rubric.pk%}" >{{rubric.name}}</a>
+    {%endfor%}
+    <a  href="{%url 'bboard:login'%}" >login</a>
+    <a  href="{%url 'bboard:logout'%}" >logout</a>
+    <a  href="{%url 'bboard:sign_up'%}" >sign up</a>
+    </nav>
+    <section>
+        {%block content%}
+        {%endblock%}
+    </section>>
+</body>
+</html>
